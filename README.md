@@ -13,7 +13,7 @@
 
 </div>
 
-[![Explore Code](https://img.shields.io/badge/EXPLORE_CODE-VIEW_SOURCE-238636?style=for-the-badge&logo=github&logoColor=white)](https://github.com)
+[![Explore Code](https://img.shields.io/badge/EXPLORE_CODE-VIEW_SOURCE-238636?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MarAlvGEN/Java-BankAccount/tree/main/bankapp/src/com/example/bankapp)
 
 ---
 
