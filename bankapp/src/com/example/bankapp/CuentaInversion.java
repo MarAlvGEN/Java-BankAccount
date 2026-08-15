@@ -14,28 +14,25 @@ public class CuentaInversion extends CuentaBancaria {
     }
 
     @Override
+    protected String describir() {
+        return super.describir() + " | Plazo: " + plazoMeses + " meses - Tasa Anual: " + tasaAnual + "%";
+    }
+
+    @Override
     protected double calcularComision() {
-        return penalizacionRetiroAnticipado;
+        return this.penalizacionRetiroAnticipado;
+    }
+
+    @Override
+    protected void realizarRetiro(double monto) {
+        setSaldo(getSaldo() - monto - calcularComision());
     }
 
     protected double calcularComision(int mesesTranscurridos) {
         if (mesesTranscurridos >= plazoMeses) {
             return 0;
         } else {
-            return penalizacionRetiroAnticipado;
+            return calcularComision();
         }
     }
-
-    @Override
-    protected String describir() {
-        // TODO Auto-generated method stub
-        return super.describir();
-    }
-
-    @Override
-    protected void realizarRetiro(double monto) {
-        // TODO Auto-generated method stub
-        super.realizarRetiro(monto);
-    }
-
 }

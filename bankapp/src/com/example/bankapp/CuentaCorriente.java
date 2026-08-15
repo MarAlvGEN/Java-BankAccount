@@ -13,21 +13,23 @@ public class CuentaCorriente extends CuentaBancaria {
     }
 
     @Override
-    protected double calcularComision() {
-        // TODO Auto-generated method stub
-        return super.calcularComision();
+    protected String describir() {
+        return super.describir() + " | Comisión por transacción: " + comisionPorTransaccion;
     }
 
     @Override
-    protected String describir() {
-        // TODO Auto-generated method stub
-        return super.describir();
+    protected double calcularComision() {
+        return comisionPorTransaccion;
     }
 
     @Override
     protected void realizarRetiro(double monto) {
-        // TODO Auto-generated method stub
-        super.realizarRetiro(monto);
-    }
+        double saldoResultante = getSaldo() - monto - calcularComision();
 
+        if (saldoResultante < -limiteSobregiro) {
+            System.out.println("El retiro no es posible");
+        } else {
+            setSaldo(saldoResultante);
+        }
+    }
 }

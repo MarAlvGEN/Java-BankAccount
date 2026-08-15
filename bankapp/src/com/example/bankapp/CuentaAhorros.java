@@ -13,6 +13,11 @@ public class CuentaAhorros extends CuentaBancaria {
     }
 
     @Override
+    protected String describir() {
+        return super.describir() + " | Tasa mensual: " + tasaInteresMensual + "%";
+    }
+
+    @Override
     protected double calcularComision() {
         if (getSaldo() >= saldoMinimo) {
             return 0;
@@ -22,12 +27,18 @@ public class CuentaAhorros extends CuentaBancaria {
     }
 
     @Override
-    protected String describir() {
-        return super.describir() + " | Tasa Mensual: [" + tasaInteresMensual + "] \n";
+    protected void realizarRetiro(double monto) {
+        realizarRetiro(monto, false);
     }
 
     protected void realizarRetiro(double monto, boolean esUrgente) {
-        super.realizarRetiro(monto);
+        double saldoResultante = getSaldo() - monto;
+
+        if (esUrgente && (saldoResultante < this.saldoMinimo)) {
+            setSaldo(saldoResultante - 12000);
+        } else {
+            setSaldo(saldoResultante);
+        }
     }
 
     protected double calcularInteresDelMes() {

@@ -28,11 +28,10 @@ public class CuentaBancaria {
     }
 
     protected String describir() {
-        return "Cuenta: [" + numeroDeCuenta + "] | Titular: [" + titular + "] | Saldo: [" + saldo + "]";
+        return "Cuenta: " + numeroDeCuenta + " | Titular: " + titular + " | Saldo: $" + saldo;
     }
 
     protected double calcularComision() {
-
         return 0;
     }
 
